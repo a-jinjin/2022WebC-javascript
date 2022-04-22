@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div></div>
+  </div>
+
+
+  <script>
+    const root = document.getElementById("root");
+    console.dir(root);
+    console.log(root.children);
+    console.log(root.children[0]);
+    console.dir(root.children[0]);
+
+    // root.children[0].textContent = "우왕 금요일";
+    // let changeTxt = "내일은 토요일";
+    // ====> 이거 어차피 문자열 꾸러미인데, 한 번에 변수에 저장해놓으면 안되나?
+
+    const textArray = ["안녕 활기찬 금요일", "토요일 좋아", "일요일은 내가 짜파게티 요리사", "월요병이 왜 월요병이게요", "화요일엔 화나요"];
+    // ===> 그래서 변수로 저장했다.
+
+    document.body.style.width = "100vw";
+    document.body.style.height = "100vh";
+    document.body.style.backgroundColor = "lightgreen";
+    document.body.style.margin = 0;
+    document.body.style.padding = 0;
+
+    root.children[0].textContent = textArray[0];
+
+
+    document.body.addEventListener('click', function(){
+      root.children[0].textContent = textArray[1];
+      /*
+      문서의 바디부분을 클릭하면 두번째 인수로 자리잡혀있는 함수 내용을 실행시켜줘
+      함수 내용이 뭐냐면 사람들은 이걸 알고리즘이라고 부르더라. 근데 그건 모르겠고, root에 있는 자식의 0번째가 있을거거든? 그것도 아마 태그일거야. 거기에 text node 키에다가 변수 문자열 **"재할당"**해줘.
+      */
+
+    });
+
+
+  </script>
+</body>
+</html>

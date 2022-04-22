@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div></div>
+  </div>
+
+
+  <script>
+    const root = document.getElementById("root");
+    console.dir(root);
+    console.log(root.children);
+    console.log(root.children[0]);
+    console.dir(root.children[0]);
+
+    // root.children[0].textContent = "우왕 금요일";
+    // let changeTxt = "내일은 토요일";
+    // ====> 이거 어차피 문자열 꾸러미인데, 한 번에 변수에 저장해놓으면 안되나?
+
+    const textArray = ["안녕 활기찬 금요일", "토요일 좋아", "일요일은 내가 짜파게티 요리사", "월요병이 왜 월요병이게요", "화요일엔 화나요"];
+    // ===> 그래서 변수로 저장했다.
+
+    document.body.style.width = "100vw";
+    document.body.style.height = "100vh";
+    document.body.style.backgroundColor = "lightgreen";
+    document.body.style.margin = 0;
+    document.body.style.padding = 0;
+
+
+    /*
+    알고리즘 구상 : 문서를 클릭할때마다 텍스트가 바뀌도록 하고싶다.
+    1. 텍스트 목록이 필요하겠다.
+    2. 목록은 배열이 순서대로 쓴다더라.
+    3. 순서는 숫자니까 +1 시켜주면 되겠다.
+    4. 숫자는 어떻게 +1시켜야되나?
+    5. 숫자 변수를 하나 만들어주면 되겠다.
+    */
+
+
+    let indexValue = 0;
+
+    document.body.addEventListener('wheel', function(){
+      
+      if(root.children[0].textContent === "") {
+        root.children[0].textContent = textArray[indexValue];
+      }else{
+        indexValue++;
+        // ==> indexValue = indexValue+1; 이랑 같은 말!
+        console.log(indexValue);
+        root.children[0].textContent = textArray[indexValue];
+      }
+      if(indexValue === textArray.length){
+        indexValue = 0;
+      }
+
+    });
+
+
+  </script>
+</body>
+</html>
