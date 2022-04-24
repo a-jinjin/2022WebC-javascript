@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>What Can JavaScript Do?</h2>
+<!-- 제목 -->
+
+<p id="demo">JavaScript can change HTML content.</p>
+<!-- id는 'demo'이고, "JavaScript can change HTML content."라는 내용이 들어있다. -->
+
+<button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
+<!-- 
+버튼을 만들었다. 버튼타입은 button이고(기본값) 클릭하면 이벤트를 발생시킬 것이다.
+
+1. document.getElementeById("demo") ==> 문서에서 "demo"라는 id를 가진 element를 가져올것이다.
+2. .innerHTML ==> 검색해본 결과, '내용을 넣겠다'는 말인 것 같다.
+3. = "Hello JavaScript!" ==> innerHTML에 "Hello JavaScript!"라고 대입하겠다. (=="demo"는 이미 내용이 들어있는 element였기 때문에 재할당, 즉 "내용을 바꾸겠다"는 뜻이 되는 것 같다.)
+
+====> 최종 결과 : Click me! 라고 쓰여져있는 버튼을 누르면 "JavaScript can change HTML content"라고 쓰여져 있던 글씨가
+"Hello JavaScript!"로 바뀌는 페이지가 완성된다.
+-->
+
+</body>
+</html>
