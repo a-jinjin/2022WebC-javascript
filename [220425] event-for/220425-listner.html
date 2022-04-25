@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{margin:0; padding: 0;}
+
+    #root {
+      width: 100vw; height: 100vh;
+      background-color: #333;
+    }
+
+    #root > div {
+      width: 100px; height: 100px;
+      border: 1px solid #ccc;
+      color: #fff;
+    }
+  </style>
+
+</head>
+
+
+<body>
+
+  <div id="root">
+
+    <div>1</div>
+    <div>2</div>
+
+  </div>
+
+
+  <script>
+
+    const root = document.getElementById('root');
+    const one = root.children[0]; 
+    // text node에 문자열1이라고 써놨던 div
+
+    const two = root.children[1]; 
+    // text node에 문자열2라고 써놨던 div
+    // const test = document.querySelector("#root>div:nth-child(2)");
+    // ==> two와 test는 같은 div지만, two처럼 사용하는 것을 권장한다. (test의 방식대로 불러오면 너무 길어져서 오류가 생기기 쉬움!)
+
+    two.textContent = "div NO.2 !!"
+    // two의 text node를 재할당 한다.
+
+    console.log(root);
+    console.dir(root);
+    console.dir(root.children[0]);
+    console.log(typeof two.textContent);
+
+
+    /* 
+    ~~~ Event ~~~ 
+    event : "무슨 일이 일어났다"는 의미
+    */
+
+    one.addEventListener('wheel', function() {
+      two.style.transition = '1s';
+      two.textContent = '~CLICK EVENT~';
+      two.style.backgroundColor = '#ff0000';
+      two.style.width = '200px'
+
+      
+      console.log(two.style.backgroundColor); //debugging
+      // ==> 중간에 무언가 막혔을 때 "짐짓" 되겠거니 하다가 막혔다.
+      // ==> 디버깅으로 중간에 제대로 안써줬다는 것을 발견하게 된다.
+      if(two.style.backgroundColor === 'rgb(255, 0, 0)') {
+        two.style.backgroundColor = '#0000ff'
+      }
+    });
+
+  </script>
+</body>
+</html>

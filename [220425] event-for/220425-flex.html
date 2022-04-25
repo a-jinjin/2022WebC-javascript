@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+
+    <div id="box"">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+  </div>
+
+
+  <script>
+
+    const root = document.getElementById('root');
+    // console.dir(root);
+    const box = document.getElementById('box');
+    // console.dir(box);
+
+    let hun = 100;
+    let center = 'center';
+
+    root.style.width = hun+'vw';
+    root.style.height = hun+'vh';
+    root.style.display = 'flex';
+    root.style.alignItems = center;
+    root.style.justifyContent = center;
+
+    let half = 50;
+    // 자식 div의 크기를 편하게 설정하기 위해 변수를 지정
+
+    box.style.width = half+'vw';
+    box.style.height = half+'vw';
+    box.style.backgroundColor = '#ccc';
+    box.style.display = 'flex';
+    box.style.alignItems = center;
+    box.style.justifyContent = center;
+
+    const one = box.children[0];
+    // console.dir(one);
+    const two = box.children[1];
+    const thr = box.children[2];
+
+    one.style.width = half/3+'vw';
+    one.style.height = half/3+'vw';
+    one.style.backgroundColor = '#333';
+
+    two.style.width = half/3+'vw';
+    two.style.height = half/3+'vw';
+    two.style.backgroundColor = '#555';
+
+    thr.style.width = half/3+'vw';
+    thr.style.height = half/3+'vw';
+    thr.style.backgroundColor = '#777';
+
+
+    // event!
+    two.addEventListener('click', function(){
+      // 2라고 써있는 div를 클릭하면 이벤트 발생하게 해달라
+      box.style.flexDirection = 'column';
+      // flexDirection을 column으로 바꿔달라
+    });
+
+  </script>
+</body>
+</html>
