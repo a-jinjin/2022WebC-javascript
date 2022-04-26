@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark</title>
+</head>
+
+
+<body>
+  <div id="root">
+    <button>상</button>
+    <button>하</button>
+    <button>좌</button>
+    <button>우</button>
+    <div></div>
+  </div>
+
+  <script>
+    
+    document.body.style.margin = '0';
+
+    const root = document.getElementById('root');
+    
+    root.style.width = '100vw'
+    root.style.height = '100vh'
+    root.style.backgroundColor = '#c4c4c4';
+    root.style.position = 'relative';
+
+    
+    // const helloBtn = root.children[0];
+    // const helloTxt = root.children[4];
+
+    for(let btnI = 0; btnI < root.children.length-1; btnI++){
+    root.children[btnI].style.padding = '10px';
+    root.children[btnI].style.width = '50px';
+    root.children[btnI].style.height = '50px';
+    console.log(root.children[btnI]);
+    };
+
+    const circle = root.children[4];
+
+    circle.style.width = '100px';
+    circle.style.height = '100px';
+    circle.style.borderRadius = '50px';
+    circle.style.backgroundColor = 'blue';
+    circle.style.margin = '10px';
+    circle.style.position = 'absolute';
+
+    let value = 0;
+
+    root.children[0].addEventListener('click', function(){
+      circle.style.top = value-10+'px';
+      value = value-10;
+    });
+    
+    
+
+  </script>
+</body>
+</html>

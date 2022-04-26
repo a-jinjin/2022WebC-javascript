@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark</title>
+</head>
+
+
+<body>
+  <div id="root">
+    <button>mode</button>
+  </div>
+
+  <script>
+    const root = document.getElementById('root');
+    const clickBtn = root.children[0];
+    // const test = document.querySelector("#root>button");
+    // clickBtn과 test는 같은 것을 꺼내온 것이다.
+    // 접근방법이 다를 뿐! 편한걸 사용하면 된다.
+    
+    console.log(clickBtn);
+
+    let bgColorValue = 333;
+
+    root.style.width = '100vw';
+    root.style.height = '100vh';
+    root.style.backgroundColor = `#${bgColorValue}`;
+
+    let data = true;
+    clickBtn.addEventListener('click', function(){
+      // console.log('Yeaaaahhh');
+      // console.log(root.style.backgroundColor);
+
+      if(data===true){
+        // console.log('if data값은 '+data);
+        data = false;
+        root.style.transition = '1s';
+        root.style.backgroundColor = 'gold';
+        clickBtn.textContent = 'night';
+        alert('day');
+
+      }else{ //데이터가 true가 아니라면 (==> data === false)
+        // console.log('else data값은 '+data);
+        data = true;
+        root.style.transition = '1s';
+        root.style.backgroundColor = 'darkblue';
+        clickBtn.textContent = 'day'
+        alert('night');
+      }
+    });
+    /*
+    스위치 개념의 let data를 달아주고 그것으로 온/오프를 반복하도록 하는 패턴 ==> 앞으로 자주 사용할 패턴!
+    대표적인 예가 '다크모드'일 뿐.
+    드롭다운메뉴, 로그인, 잠금해제 등등 이런 로직을 사용하는 곳이 많다.
+    */
+
+
+  </script>
+</body>
+</html>

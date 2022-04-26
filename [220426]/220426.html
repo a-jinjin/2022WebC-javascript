@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+
+  <!-- <script>
+
+    const arr = ["피카츄", "라이츄", "도요새", "꼬북이"];
+    const test = ["피카츄", "라이츄", "파이리", "꼬북이"];
+    console.log(arr[2] === test[2]);
+
+    if(arr[2] === test[2]){
+      console.lot('야호');
+    }else{
+      test[2] = "도요새";
+      console.log(test);
+    }
+    // 16행의 if()영역
+
+    if(arr[2] === test[2]){
+      arr[2] = "바밤바";
+      test[2] = "바밤바";
+      console.log(arr);
+      console.log(test);
+    }else{
+      console.log('거꾸로해도 바밤바');
+    }
+
+  </script> -->
+  
+  <!-- <script>
+    
+    let a;
+    // 변수만 선언해준 것.
+    console.log(a);
+    a = 1;
+    console.log(a);
+
+    const b = document.getElementById('root');
+    console.log(b);
+
+  </script> -->
+
+  <div id="root">
+
+  </div>
+  
+  <script>
+
+    const a = document.querySelector('#root');
+
+    let value = 100;
+    let colorValue = 333;
+    // 변수로 꺼냈다.
+
+    a.style.whdth = value+'vw';
+    a.style.height = `${value}vh`;
+    a.style.backgroundColor = `#${colorValue}`;
+    // ====> const와 let을 어떨 때 쓰는지 잘 기억해두기
+
+    a.addEventListener('click', function(){
+      let result;
+      console.log("result연산 시작 전 / value === "+value);
+      result = value/2;
+
+      a.style.width = `${result}vw`;
+      a.style.height = `${result}vh`;
+
+      value = result;
+      // value === 50이 된다.
+      console.log("result연산 끝(result값을 value에 대입시키고 난 뒤) / value === "+value);
+    });
+
+  </script>
+
+</body>
+</html>
