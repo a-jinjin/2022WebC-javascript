@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="root">
+
+    <div id="up"></div>
+    <div id="down"></div>
+    <img id="img" src="https://images.unsplash.com/photo-1615801680383-666341b26026?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
+
+  </div>
+
+  <script>
+
+    document.body.style.margin=0;
+    document.body.style.padding=0;
+
+    const root = document.getElementById('root');
+    const upBtn = document.getElementById('up');
+    const downBtn = document.getElementById('down');
+    const img = document.getElementById('img');
+
+    root.style.width = '100vw';
+    root.style.height = '100vh';
+    root.style.display = 'flex';
+    root.style.overflow = 'hidden';
+    root.style.position = 'relative';
+
+    upBtn.style.width = '100px';
+    upBtn.style.height = '100px';
+    upBtn.style.backgroundColor = 'red';
+    upBtn.style.position = 'absolute';
+    upBtn.style.zIndex = '1';
+
+    downBtn.style.width = '100px';
+    downBtn.style.height = '100px';
+    downBtn.style.backgroundColor = 'blue';
+    downBtn.style.position = 'absolute';
+    downBtn.style.zIndex = '1';
+    downBtn.style.top = '100px';
+
+    console.dir(img);
+    img.style.position = 'absolute';
+    img.style.zIndex = '0';
+    
+
+    /*
+      1. upBtn을 누르면 img가 위로 10px씩 올라간다.
+      2. downBtn을 누르면 img가 아래로 10px씩 내려간다.
+    */
+    let size = 0;
+    upBtn.addEventListener('click', function(){
+      size = size+10;
+      img.style.bottom = size+'px';
+      console.dir(img.style);
+    });
+
+    downBtn.addEventListener('click', function(){
+      size = size+10;
+      img.style.top = size+'px';
+      console.dir(img.style);
+    });
+
+    // !! 문제점 : down을 누르고 up을 누르면 up이 동작하지 않는다. 또한, up을 누르다가 down을 누르면 해당 시점으로부터 10px 움직이는 것이 아니라 이미지가 원위치로 돌아온 다음 10px씩 움직인다.
+
+    // ==> upBtn과 downBtn의 이벤트는 각자 따로 돌아가는 것. 둘 사이의 연관관계는 없다.
+
+  </script>
+
+</body>
+</html>

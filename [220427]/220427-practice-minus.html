@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>hello!</h1>
+
+
+  <script>
+    const h1 = document.querySelector('h1');
+    console.log(h1);
+
+    console.dir(h1.style);
+    // ==> 폰트 사이즈에 값이 없는데? ==> 지정해줘야겠다.
+
+    let fontSizeValue = 32;
+
+    h1.style.fontSize = fontSizeValue+'px';
+
+    h1.addEventListener('click', function(){
+      // fontSizeValue--;
+      // h1.style.fontSize = fontSizeValue+'px';
+      
+      // console.log(fontSizeValue);
+
+      // if(fontSizeValue > 10){
+      //   fontSizeValue--;
+      //   h1.style.fontSize = fontSizeValue+'px';
+      // }else{
+      //   fontSizeValue++;
+      //   h1.style.fontSize = fontSizeValue+'px';
+      // }
+      // ====> fontsize가 10 이상이면 fontsize를 1씩 줄여달라.
+      // ==> 문제 : fontsize가 10일 때 클릭하면 else가 실행되어서 fontSizeValue가 11이 되는데, 그러다보니 다시 폰트 크기가 줄어들고 줄었다 늘었다 무한반복 구간이 발생한다.
+    
+
+    });
+  </script>
+</body>
+</html>

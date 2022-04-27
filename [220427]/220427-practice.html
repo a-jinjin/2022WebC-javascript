@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>hello javascript</h1>
+</body>
+
+<!-- h1태그를 클릭할때마다 글씨 크기가 1px씩 커지는 인터렉션을 구현하시오. -->
+  <script>
+    const hello = document.getElementsByTagName('h1');
+    console.dir(hello);
+    console.log(hello);
+    // style속성을 줄 수 없는 이유?
+    console.dir(hello[0]);
+    const text = hello[0];
+
+    // text.style.color = 'red';
+    // 잘 선택된 것 같다.
+
+    let size = 32;
+    text.style.fontSize = `${size}px`;
+
+    let num = 1;
+
+    text.addEventListener('click', function(){
+      // text.style.color = 'red';
+      // text.style.fontSize = '40px';
+
+        text.style.fontSize = `${size+num}px`;
+
+
+    });
+
+
+  </script>
+</html>
