@@ -1,58 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-
 <body>
   <div id="root"></div>
 
   <script>
-    const root = document.getElementById("root");
-    // 'root'를 아이디로 불러온다. 변수 root에 대입한다.
-    root.style.fontSize = "5rem";
-    // 변수 root의 style에서 fontsize에 5rem(80px)을 대입한다.
-    let isStatus = true;
-    // isStatus라는 변수를 선언한다. 'true'값을 대입한다.
+    const root = document.getElementById('root');
+    
     let current = 0;
-    // current라는 변수를 선언한다. '0'값을 대입한다.
     root.textContent = current;
-    // root의 textContent에 변수 currnet를 대입한다.
-    root.addEventListener('click', function () {
-      // root에 click이벤트를 추가한다.
-      if (isStatus === true) {
-        // isStatus가 true라면
+    root.style.fontSize = '4rem';
+    
+    // root.addEventListener('click', function(){
+    //   if(current === false){
+    //     console.log('hello');
+    //     root.textContent = '안녕';
+    //     current = true;
+    //   }else{
+    //     console.log('olleh');       
+    //     root.textContent = '녕안'; 
+    //     current = false;
+    //   }
+    // });
+    let value = true;
+    // root.addEventListener('click', function(){
+    //   if(current < 10 && value === true){
+    //     current++;
+    //     console.log(current);
+    //     console.log(value);
+    //   }else if(current === 10){
+    //     value = false;
+    //     current--;
+    //     console.log(current);
+    //     console.log(value);
+    //   }else{
+    //     current--;
+    //     console.log(current);
+    //     console.log(value);
+    //   }
+    //   root.textContent = current;
+      
+    //   if (current === 0){
+    //     value = true;
+    //     current++;
+    //     console.log(current);
+    //     console.log(value);
+    //   }
+    // });
+    // ===> 되기는 하는데, 10에서 0으로 바뀐 뒤 다시 증가할 때, 1을 출력하지 않고 바로 2부터 증가한다.
+
+    root.addEventListener('click', function(){
+      if(value === true){
         current++;
-        // 클릭할때마다 current값을 1씩 증가시킨다.
-        if (current >= 10) {
-          // current값이 10과 같거나 크다면
-          isStatus = false;
-          // isStatus를 flase로 바꾼다.
+        // console.log(current);
+
+        if(current >= 10){
+          current++;
+          // 의문1. ++해주지 않으면 10이 되지 않고 9가 두 번 출력된 뒤 flase로 바뀌어 --가 실행된다.
+          value = false;
+          // console.log(current);
         }
-        // 
         root.textContent = current;
-        // root의 textContent에 current를 대입한다.
-      } else {
-        // isStatus값이 false라면
-        current--;
-        // current값을 1씩 감소시킨다.
-        if (current <= 0) {
-          // current가 0과 같거나 작다면
-          isStatus = true;
-          // isStatus를 true로 바꿔라. 
-        }
-        // ==> isStatus에 true가 대입되어있다면 current값이 증가할 것이고, isStatus에 false가 대입되어있다면 current값이 감소할 것이다.
-        root.textContent = current;
-        // root의 textContent에 current값을 대입해라.
-        // current값을 문서에서 보기 위해 넣은 것.
       }
-    })
+      if(value === false){
+        current--;
+        // console.log(current);
+      
+        if(current === 0){
+          value = true;
+          // console.log(current);
+          // 의문1. 근데 왜 감소는 --를 해주지 않아도 0이 두 번 출력되지 않을까?
+        }
+      }
+      root.textContent = current;
+    });
+
   </script>
 
 </body>
-
 </html>
