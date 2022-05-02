@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    document.body.style.padding = 0;
+    document.body.style.margin = 0;
+    // 문서의 기본 여백을 삭제
+
+    const root = document.getElementById("root");
+    // root라는 변수에 document의 root라는 아이디를 가진 개체를 대입한다.
+
+    let sectionArr = ["피카츄", "라이츄", "파이리", "꼬부기"];
+    let sectionColor = ["salmon", "darkgray", "darkblue", "darkcyan"];
+    // 배열 두 개. arr에는 '피카츄 라이츄 ---'값이 대입되어 있고, color에는 색상들이 들어있다.
+
+    console.dir(window);
+    // console에 window의 디렉토리를 띄워달라.
+
+    const viewWidth = window.innerWidth;
+    const viewHeight = window.innerHeight;
+    //const viewWidth, viewHeight에 window의 innerWidth/innerHeight값을 대입한다.
+
+    console.log(viewWidth);
+    console.log(viewHeight);
+    // 29, 30에서 대입한 값을 console에 띄워달라.
+
+    root.style.width = viewWidth + "px";
+    // 29의 변수에 viewWidth값 + px을 대입한다. (viewWidth px만큼 문서의 가로값이 지정될 것이다.)
+    root.style.height = viewHeight + "px";
+    // 30의 변수에 viewheight값 + px을 대입한다. (viewHeight px만큼 문서의 가로값이 지정될 것이다.)
+    root.style.backgroundColor = "#c4c4c4";
+    // root의 style에 c4c4c4값을 대입한다. (==> 문서 전체에 배경색을 지정해 주는 것과 같음)
+
+    root.addEventListener("click", function () {
+    // root에 click 이벤트를 넣을 것이다.
+
+      for (let i = 0; i < sectionArr.length; i++) {
+      // 변수 i는 0이 대입되어있다. i의 값이 sectionArr.length(배열 sectionArr의 총 길이)값보다 작다면 아래의 내용을 반복하고 i의 값을 증가시켜라.
+
+        let sectionElement = document.createElement("section");
+        // 변수 sectionElement를 선언했다. 문서에 'section'이라는 엘리먼트를 생성해 sectionElement에 대입할 것이다.
+
+        sectionElement.textContent = sectionArr[i];
+        // sectionElement의 안에 배열 sectionArr의 i번째 값을 대입한다.
+        sectionElement.style.width = viewWidth + "px";
+        // sectionElement의 가로길이 값에 viewWidth+px을 대입한다.
+        sectionElement.style.height = (viewHeight / sectionArr.length) + "px";
+        // sectionElement의 세로길이 값에 viewHeight을 배열 sectionArr의 길이로 나눈 값+px을 대입한다.
+        sectionElement.style.backgroundColor = sectionColor[i];
+        // sectionElement의 배경값에 배경 sectionColor의 i번째 값을 대입한다.
+        
+        root.appendChild(sectionElement);
+        // root에 자식을 추가한다. 변수 sectionElement를 root의 자식으로 추가한다.
+      }
+      // ==> root에 자식을 추가하는 for문이다.
+      // ==> 클릭을 할 때마다 root에 자식이 추가될 것이다. (배열의 길이만큼(이 문서에서는 4개)의 자식이 추가될 것이다.)
+
+    });
+
+  </script>
+
+</body>
+
+</html>
