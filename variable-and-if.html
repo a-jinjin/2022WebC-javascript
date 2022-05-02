@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    const root = document.getElementById("root");
+    // 'root'를 아이디로 불러온다. 변수 root에 대입한다.
+    root.style.fontSize = "5rem";
+    // 변수 root의 style에서 fontsize에 5rem(80px)을 대입한다.
+    let isStatus = true;
+    // isStatus라는 변수를 선언한다. 'true'값을 대입한다.
+    let current = 0;
+    // current라는 변수를 선언한다. '0'값을 대입한다.
+    root.textContent = current;
+    // root의 textContent에 변수 currnet를 대입한다.
+    root.addEventListener('click', function () {
+      // root에 click이벤트를 추가한다.
+      if (isStatus === true) {
+        // isStatus가 true라면
+        current++;
+        // 클릭할때마다 current값을 1씩 증가시킨다.
+        if (current >= 10) {
+          // current값이 10과 같거나 크다면
+          isStatus = false;
+          // isStatus를 flase로 바꾼다.
+        }
+        // 
+        root.textContent = current;
+        // root의 textContent에 current를 대입한다.
+      } else {
+        // isStatus값이 false라면
+        current--;
+        // current값을 1씩 감소시킨다.
+        if (current <= 0) {
+          // current가 0과 같거나 작다면
+          isStatus = true;
+          // isStatus를 true로 바꿔라. 
+        }
+        // ==> isStatus에 true가 대입되어있다면 current값이 증가할 것이고, isStatus에 false가 대입되어있다면 current값이 감소할 것이다.
+        root.textContent = current;
+        // root의 textContent에 current값을 대입해라.
+        // current값을 문서에서 보기 위해 넣은 것.
+      }
+    })
+  </script>
+
+</body>
+
+</html>
