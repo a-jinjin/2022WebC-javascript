@@ -9,7 +9,8 @@
 <body>
   <div id="root">
 
-    <button id="poketPlus">poket</button>
+    <h2>포켓몬을 모아보자</h2>
+    <button id="poketPlus">모여라</button>
     <div id="poketText"></div>
 
   </div>
@@ -20,6 +21,22 @@
     const root = document.getElementById('root');
     const poketBtn = document.getElementById('poketPlus');
     const poketText = document.getElementById('poketText');
+
+    // 정렬
+    root.style.display = 'flex';
+    root.style.alignItems = 'center';
+    root.style.flexDirection = 'column';
+    
+    // 버튼 스타일링
+    poketBtn.style.width = '100px';
+    poketBtn.style.height = '50px';
+    poketBtn.style.border = '5px solid gold';
+    poketBtn.style.borderRadius = '10px';
+    poketBtn.style.backgroundColor = 'white';
+    poketBtn.style.color = 'orange';
+    poketBtn.style.fontSize = '14px';
+    poketBtn.style.fontWeight = 'bold';
+
 
     // 출력할 내용물들이 들어있는 배열
     const monsterArr = ["피카츄", "라이츄", "파이리", "꼬부기", "버터풀", "야도란", "피죤투", "또가스"];
