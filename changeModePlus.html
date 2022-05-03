@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+
+    <h1>HELLO</h1>
+    <button id="hello">hello</button>
+    <button id="del">delete</button>
+
+  </div>
+
+
+  <script>
+
+    const root = document.getElementById('root');
+    const hello = document.getElementById('hello');
+    const del = document.getElementById('del');
+    
+    document.body.style.margin = 0;
+    document.body.style.padding = 0;
+    // console.log(document.body);
+    // ==> 왜...마진/패딩을 다 0으로 줬는데도 여백이 생기지...?
+    // ==> 개발자도구 보니까 h1에 마진이 들어가있음
+
+    root.children[0].style.margin = '0 0 40px 0';
+
+    // root 스타일링
+    root.style.width = '100vw';
+    root.style.height = '100vh';
+    root.style.backgroundColor = '#c4c4c4';
+
+    
+    // !! 만들고싶은 이벤트 :
+    // hello를 클릭하면 h2태그가 추가되고, del버튼을 누르면 h2태그가 삭제되도록 하고싶다.
+
+    hello.addEventListener('click', function(){
+    // hello에 이벤트를 추가하겠다.
+      
+      // ★★★★★★★★ 자식요소 추가하는 방법 ★★★★★★★
+
+      let textHello = document.createElement('h2');
+      root.appendChild(textHello);
+
+      // ==> createElement와 appendChild 사용하는 방법.
+      // ==> 두개는 세트다!
+      
+      // ★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
+      textHello.textContent = 'hello';
+      // 생성한 h2에 'hello'라는 텍스트를 대입
+    });
+
+    del.addEventListener('click', function(){
+    // del에 이벤트를 추가하겠다.
+    // console.dir(root.children[3]);
+    // ==> root에 네 번째 자식 (h2)가 제대로 생성되는지 확인
+      
+      if(root.children[3] !== undefined){
+      // root.children[3]의 값을 찾을 수 없는게 아니라면 (값이 존재한다면)
+        root.children[3].remove();
+        // root.children[3]을 지워라.
+
+      }else{
+        alert('삭제할 것이 없습니다.')
+        // root.children[3]값을 찾을 수 없다면 alert(알림)을 띄워라.
+      }
+    });
+
+  </script>
+</body>
+</html>
