@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+
+    <h1>HELLO</h1>
+    <button id="dark">dark</button>
+    <button id="light">light</button>
+
+  </div>
+
+
+  <script>
+
+    const root = document.getElementById('root');
+    const dark = document.getElementById('dark');
+    const light = document.getElementById('light');
+    
+    document.body.style.margin = 0;
+    document.body.style.padding = 0;
+    console.log(document.body);
+
+    // root 스타일링
+    root.style.width = '100vw';
+    root.style.height = '100vh';
+    root.backgroundColor = '#fff';
+
+
+    // console.dir(dark);
+    dark.addEventListener('click', function(){
+      root.style.backgroundColor = '#000';
+      root.children[0].style.color = '#fff';
+    });
+
+    light.addEventListener('click', function(){
+      root.style.backgroundColor = '#fff';
+      root.children[0].style.color = '#000';
+    });
+
+  </script>
+</body>
+</html>
