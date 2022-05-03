@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <button id="btnColor">BGC</button>
+    <div id="box"></div>
+  </div>
+
+  <script>
+    const root = document.getElementById('root');
+    const btnColor = document.getElementById('btnColor');
+    const box = document.getElementById('box');
+    // id로 요소들을 불러왔다.
+
+    root.style.width = '100vw';
+    root.style.height = '100vh';
+    //root의 크기를 지정해줬다. (=== 문서의 전체 크기 지정)
+    root.style.display = 'flex';
+    root.style.justifyContent = 'center';
+    root.style.alignItems = 'center';
+    root.style.flexDirection = 'column';
+    // 버튼 정렬을 위해 부모인 root에 값을 넣어줌
+
+    // console.dir(btnColor)
+    btnColor.style.width = '100px';
+    btnColor.style.height = '50px';
+    btnColor.style.borderRadius = '50px'
+    btnColor.style.border = 'none';
+    btnColor.style.backgroundColor = 'lightgray';
+    btnColor.style.color = 'gray';
+    // 버튼 스타일 넣어봄
+
+    box.style.width = '200px';
+    box.style.height = '200px';
+    box.style.borderRadius = '40px'
+    box.style.backgroundColor = 'lightgray';
+    box.style.marginTop = '30px';
+    box.style.color = '#fff'
+    box.style.textAlign = 'center';
+    box.style.fontSize = '2rem';
+    console.dir(box.style);
+    // box 스타일 넣어봄
+
+    let bgColor = ['orange', 'orangered', 'brown'];
+    // 버튼을 클릭할때마다 색상이 바뀌도록 하고싶다.
+    // 바뀔 색상들을 배열로 만들어줬다.
+    // ==> 이제 이 색상들을 순서대로 꺼내 출력해주면 되지 않을까?
+
+    let poke = ['피카츄', '라이츄', '파이리', '꼬부기'];
+    // 누를때마다 포켓몬 이름 나오도록 해보기 위해 배열을 만들어놨다.
+
+    let i = 0;
+    // bgColor를 제어하기 위한 변수 지정
+
+    btnColor.addEventListener('click', function(){
+    // 버튼에 클릭 이벤트를 넣겠다.
+
+      if(i < 3) {
+      // 변수 i에 들어있는 값이 3보다 작다면
+        box.style.backgroundColor = bgColor[i];
+        // 배열 bgColor의 i번째에 있는 값을 box의 배경색에 대입해줘라.
+        box.textContent = poke[i];
+        i++;
+        // 그리고 변수 i를 증가시켜라.
+      }else{
+      // 변수 i의 값이 3보다 작은것이 아니라면
+        box.style.backgroundColor = 'skyblue';
+        // 'gray'라는 값을 root의 배경색에 대입해줘라.
+        box.textContent = poke[3];
+        // poke배열의 네 번째 값을 box의 textContent에 대입해줘라.
+        i = 0;
+        // 그리고 i에 0을 대입해줘라.
+      }
+
+    });
+
+  </script>
+</body>
+</html>
