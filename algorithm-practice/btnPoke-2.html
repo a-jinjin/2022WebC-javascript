@@ -41,9 +41,20 @@
 
       i++;
 
-      if(i === monsterArr.length){
+      if(i === monsterArr.length+1){
 
         alert('우리는 모두 친구!');
+        // console.log(poketText.children);
+        // console.log(i);
+        
+        // 전부 삭제하기
+        for(let pI = 0; pI < monsterArr.length; pI++){
+          // console.log(poketText.children);
+          poketText.children[0].remove();
+        }
+
+        // 그리고 다시 i=0으로 만들어 이벤트 무한반복
+        i=0;
       }
 
     });
