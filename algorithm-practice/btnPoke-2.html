@@ -26,7 +26,7 @@
     root.style.display = 'flex';
     root.style.alignItems = 'center';
     root.style.flexDirection = 'column';
-    
+
     // 버튼 스타일링
     poketBtn.style.width = '100px';
     poketBtn.style.height = '50px';
@@ -60,7 +60,7 @@
 
       if(i === monsterArr.length+1){
 
-        alert('우리는 모두 친구!');
+        alert('다 모였으면 해산!');
         // console.log(poketText.children);
         // console.log(i);
         
@@ -68,6 +68,7 @@
         for(let pI = 0; pI < monsterArr.length; pI++){
           // console.log(poketText.children);
           poketText.children[0].remove();
+          // ==> 왜 세개까지밖에 안지워지나 콘솔 찍어봤는데, poketText의 자식들이 지워지면서 lenght값이 변화하기 때문이었다. 따라서, mosterArr.length가 몇이 되어도 존재할 '배열의 가장 첫번째'를 지워달라고 적었더니 제대로 작동이 된다.
         }
 
         // 그리고 다시 i=0으로 만들어 이벤트 무한반복
