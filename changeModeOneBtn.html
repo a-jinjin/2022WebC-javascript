@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+
+    <h1></h1>
+    <button id="lightMode">어둡게</button>
+
+  </div>
+
+
+  <script>
+
+    const root = document.getElementById('root');
+    const lightMode = document.getElementById('lightMode');
+    const hText = root.children[0];
+
+    hText.textContent = '아이코눈부셔';
+
+    document.body.style.padding = 0;
+    document.body.style.margin = 0;
+
+    // root 스타일링
+    root.style.width = '100vw';
+    root.style.height = '100vh';
+    root.style.backgroundColor = '#fff';
+    root.style.display = 'flex';
+    root.style.justifyContent = 'center';
+    root.style.alignItems = 'center';
+    root.style.flexDirection = 'column';
+
+    //btn 스타일링
+    lightMode.style.backgroundColor = 'lightgray';
+    lightMode.style.border = 'none';
+    lightMode.style.width = '70px';
+    lightMode.style.height = '40px';
+    lightMode.style.borderRadius = '10px'
+
+    let modeI = true;
+
+    lightMode.addEventListener('click', function(){
+      if(modeI === true){
+        root.style.backgroundColor = '#000';
+        hText.style.color = '#fff';
+        hText.textContent = '다크모드입니다'
+        lightMode.textContent = '밝게'
+        
+        modeI = false;
+      }else{
+        root.style.backgroundColor = '#fff';
+        hText.style.color = '#000';
+        hText.textContent = '라이트모드입니다'
+        lightMode.textContent = '어둡게'
+        
+        modeI = true;
+      }
+    });
+
+  </script>
+</body>
+</html>
