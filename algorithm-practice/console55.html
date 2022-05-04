@@ -18,7 +18,12 @@
 
     const btnHello = document.getElementById('btnHello');
     const root = document.getElementById('root');
+    let hello = 'hello';
 
+    console.log(hello);
+    console.log(hello[0]);
+
+    /*
     btnHello.addEventListener('click', function(){
       for(let i = 0; i<55; i++){
         console.log('hello');
@@ -35,7 +40,26 @@
         // 잘 작동하지만, btnHello의 textContent까지 hello로 바뀌어버린다.
         // ==> 확인 결과 root의 0번째 자식은 btnHello였다. 따라서, root.children[0]을 제외하기 위해 textI를 1로 지정해주니까 해결되었다.
       };
+
     });
+    */
+
+    let text = ['피카츄', '라이츄', '파이리', '꼬북이', '버터플', '야도란', '피존투', '또가스'];
+
+    console.log(text);
+
+    btnHello.addEventListener('click', function(){
+      
+      for(i=0; i<text.length; i++){
+        console.log(text[i]);
+      };
+
+    });
+
+
+    for(helloI = 0; helloI<hello.length; helloI++){
+      console.log(hello[helloI]);
+    };
 
   </script>
 </body>
