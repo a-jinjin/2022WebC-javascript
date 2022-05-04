@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <button id="btnHello">HELLO</button>
+  </div>
+
+
+  <script>
+
+    // 버튼을 누르면 console에 hello를 55번 띄우기(55번 누르기는 안됨!)
+
+    const btnHello = document.getElementById('btnHello');
+    const root = document.getElementById('root');
+
+    btnHello.addEventListener('click', function(){
+      for(let i = 0; i<55; i++){
+        console.log('hello');
+        // 콘솔 말고 화면에 띄우려면?
+        let text = document.createElement('p');
+        root.appendChild(text);
+        // root.children[i].textContent = 'hello';
+        // ==> p태그는 클릭할때마다 생성되는데, i의 값은 55 이하까지만 증가하기 때문에, root의 55번째 자식까지만 hello로 바뀐다.
+      }
+
+      // for를 하나 더 추가해서 text를 입력해보자.
+      for(let textI = 1; textI < root.children.length; textI++){
+        root.children[textI].textContent = 'hello';
+        // 잘 작동하지만, btnHello의 textContent까지 hello로 바뀌어버린다.
+        // ==> 확인 결과 root의 0번째 자식은 btnHello였다. 따라서, root.children[0]을 제외하기 위해 textI를 1로 지정해주니까 해결되었다.
+      };
+    });
+
+  </script>
+</body>
+</html>
