@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="alram">똑똑똑</h1>
+  <button id="a">a클릭</button>
+  <button id="b">b클릭</button>
+
+
+<script>
+let a = '똑';
+let b = '딱';
+let isStatus = true;
+let current = 0;
+
+const aBtn = document.getElementById('a');
+const bBtn = document.getElementById('b');
+const alram = document.getElementById('alram');
+// console.dir(alram);
+
+aBtn.addEventListener('click', function(){
+  const tictocTimer = setInterval(function(){
+    if(isStatus === true){
+      alram.textContent = a;
+      // console.log(a);
+      isStatus = false;
+    }else{
+      alram.textContent = b;
+      // console.log(b);
+      isStatus = true;
+      current++;
+      console.log(current);
+      alram.style.marginTop = current+'px';
+    };
+  }, 100);
+
+  
+  bBtn.addEventListener('click', function(){
+    clearInterval(tictocTimer);
+  });
+
+});
+
+
+</script>
+
+</body>
+</html>

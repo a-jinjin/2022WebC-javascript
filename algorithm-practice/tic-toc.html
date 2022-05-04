@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="start">START</button>
+  <button id="stop">STOP</button>
+  <h1 id="text">딩동</h1>
+
+  <script>
+    const startBtn = document.getElementById('start');
+    const stopBtn = document.getElementById('stop');
+    const text = document.getElementById('text');
+
+    let tic = '딩';
+    let toc = '동';
+    let current = 1;
+
+    
+    startBtn.addEventListener('click', function(){
+      
+      let tictoc = setInterval(function(){
+        current++
+  
+        if(current%2 === 0){
+          // console.log(tic);
+          text.textContent = tic;
+
+        }else{
+          // console.log(toc);
+          text.textContent = toc;
+        }
+        // ==> 짝수/홀수로 처리했지만, 0아니면 1이다 == true 아니면 false를 써도 된다. 
+
+
+        // 지역변수를 꺼내 쓸 수 없다면, 이벤트 안에 또 이벤트를 넣을 수 있나?
+        
+        stopBtn.addEventListener('click', function(){
+        // ====> '재귀함수'라고 한다. 검색해보기
+          clearInterval(tictoc);
+        });
+        // ==> 오류가 뜨지 않고 잘 작동하는 것 같다.
+        // ==> 하지만 start버튼을 먼저 누르지 않으면 stop버튼은 작동하지 않는다.
+
+
+      }, 500); 
+
+    });
+
+    stopBtn.addEventListener('click', function(){
+      alert('정지되었습니다.');
+    });
+
+      
+    // console.log(tictoc);
+
+    // stop.addEventListener('click', function(){
+    //   clearInterval(tictoc);
+    // });
+
+    // ==> tictoc이 click이벤트 안에서만 사용되는 지역변수이기때문에 불러올 수 없다.
+    
+    // console.dir(stopBtn);
+
+  </script>
+</body>
+</html>
