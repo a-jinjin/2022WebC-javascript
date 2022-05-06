@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button id="click-btn">open</button>
+  <div id="root"></div>
+
+
+  <script>
+    const root = document.getElementById('root');
+    const clickBtn = document.getElementById('click-btn');
+
+    let hun = 100;
+    root.style.width = `${hun}px`;
+    root.style.height = `${hun}px`;
+    root.style.backgroundColor = '#333';
+
+
+    let clickValue = true;
+
+    clickBtn.addEventListener('click', function(){
+      // if(hun < 200){
+      //   // alert(hun);
+      //   hun = hun+10;
+      //   root.style.width = `${hun}px`;
+      //   root.style.height = `${hun}px`;
+      // ==> 여기에 '커지는' interval을 넣어주고
+
+      // }else{
+      //   // alert('hun='+hun+'입니다');
+      //   hun = 100;
+      // }
+      // ==> 여기에 '다시 원상태로' 돌아가는 interval을 넣어주면 된다.
+
+
+      if(clickValue === true){
+
+        clickBtn.textContent = 'close';
+
+        const sizeUp = setInterval(function(){
+          if(hun < 300){
+            hun = hun+10;
+            root.style.width = `${hun}px`;
+            root.style.height = `${hun+hun}px`;
+          }else{
+            clearInterval(sizeUp);
+          }
+        },20);
+
+        clickValue = false;
+
+      }else{
+        // alert(clickValue);
+        // hun = 100;
+        // root.style.width = `${hun}px`;
+        // root.style.height = `${hun}px`;
+
+        clickBtn.textContent = 'open';
+
+        const sizeDown = setInterval(function(){
+          if(hun > 100) {
+            hun = hun-10;
+            root.style.width = `${hun}px`;
+            root.style.height = `${hun}px`;
+          }else{
+            clearInterval(sizeDown);
+          }
+        }, 5);
+        clickValue = true;
+      }
+
+    });
+      
+
+  </script>
+
+</body>
+</html>
