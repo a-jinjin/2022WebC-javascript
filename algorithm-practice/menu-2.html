@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <script>
+
+    const root = document.getElementById('root');
+    const divOne = root.children[0];
+    const divTwo = root.children[1];
+    const divThree = root.children[2];
+
+    root.style.width = '100px';
+    root.style.height = '100px';
+    root.style.display = 'flex';
+    root.style.flexDirection = 'column';
+    root.style.justifyContent = 'space-between';
+
+    divOne.style.width = '100px';
+    divOne.style.height = '10px';
+    divOne.style.backgroundColor = 'gray';
+
+    divTwo.style.width = '100px';
+    divTwo.style.height = '10px';
+    divTwo.style.backgroundColor = 'gray';
+    
+    divThree.style.width = '100px';
+    divThree.style.height = '10px';
+    divThree.style.backgroundColor = 'gray';
+
+    let value = true;
+    let oneRotateI = 0;
+    let threeRotateI = 0;
+
+    root.addEventListener('click', function(){
+
+      if(value === true){
+
+        divOne.style.transformOrigin = '37% center';
+        const oneRotate = setInterval(function() {
+          if (oneRotateI < 45){
+              oneRotateI = oneRotateI+1;
+              divOne.style.transform = `rotate(${oneRotateI}deg)`;
+            }else{
+              clearInterval(oneRotate);
+            }
+        }, 5);
+        
+        divTwo.style.visibility = 'hidden';
+
+        divThree.style.transformOrigin = '37% center';
+        const threeRotate = setInterval(function() {
+          if (threeRotateI > -45){
+            threeRotateI = threeRotateI-1;
+            divThree.style.transform = `rotate(${threeRotateI}deg)`;
+            }else{
+              clearInterval(threeRotate);
+            }
+        }, 5);
+        // divThree.style.transform = 'rotate(-45deg)';
+        
+        root.style.justifyContent = 'center';
+        
+        value = false;
+      
+      }else{
+
+        divOne.style.transformOrigin = '37% center';
+        const oneRotate = setInterval(function() {
+          if (oneRotateI > 0){
+              oneRotateI = oneRotateI-1;
+              divOne.style.transform = `rotate(${oneRotateI}deg)`;
+            }else{
+              clearInterval(oneRotate);
+            }
+        }, 5);
+        
+        divTwo.style.visibility = 'visible';
+
+        divThree.style.transformOrigin = '37% center';
+        
+        // for(i = -45; i <= 0; i++){
+        //   divThree.style.transform = `rotate(${i}deg)`
+        // };
+        // ==> for문으로 하면 먹히기는 함
+
+        const rotateThree = setInterval(function() {
+          if(threeRotateI < 0){
+            threeRotateI = threeRotateI+1;
+            divThree.style.transform = `rotate(${threeRotateI}deg)`;
+          }else{
+            clearInterval(rotateThree);
+          }
+        }, 5);
+        
+        root.style.justifyContent = 'space-between';
+
+        value = true;
+      }
+
+    });
+    
+  </script>
+</body>
+</html>
