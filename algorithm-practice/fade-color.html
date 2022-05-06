@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="color-1"></div>
+  <div id="color-2"></div>
+  <button id="click-btn">click</button>
+
+
+  <script>
+
+    const colorOne = document.getElementById('color-1');
+    const colorTwo = document.getElementById('color-2');
+    const clickBtn = document.getElementById('click-btn');
+
+    // console.log(colorOne);
+    // console.log(colorTwo);
+
+    colorOne.style.width = '100px';
+    colorOne.style.height = '100px';
+    colorOne.style.backgroundColor = '#ccc';
+    colorOne.style.position = 'absolute';
+    colorOne.style.top = '50px';
+    colorOne.style.opacity = 1;
+    
+    colorTwo.style.width = '100px';
+    colorTwo.style.height = '100px';
+    colorTwo.style.backgroundColor = '#ff0000';
+    colorTwo.style.position = 'absolute';
+    colorTwo.style.top = '50px';
+    colorTwo.style.opacity = 0;
+
+
+    let isStatus = false;
+    let opacityOne = 1;
+    let opacityTwo = 0;
+
+    clickBtn.addEventListener('click', function(){
+    
+      if(isStatus === false){
+        // alert(isStatus);
+        const fadeIn = setInterval(function(){
+          if(opacityTwo < 1){
+            opacityTwo = opacityTwo+0.1;
+            colorTwo.style.opacity = opacityTwo;
+          }else{
+            clearInterval(fadeIn);
+          }
+        },20);
+
+        const fadeOut = setInterval(function(){
+          if(opacityOne > 0){
+            opacityOne = opacityOne-0.1;
+            colorOne.style.opacity = opacityOne;
+          }else{
+            clearInterval(fadeOut);
+          }
+        },20);
+        
+        isStatus = true;
+        // alert(isStatus);
+  
+
+      }else{
+    
+        // alert(isStatus);
+        // colorOne.style.opacity = 1;
+        // colorTwo.style.opacity = 0;
+    
+        const fadeIn = setInterval(function(){
+          if(opacityOne < 1){
+            opacityOne = opacityOne+0.1;
+            colorOne.style.opacity = opacityOne;
+          }else{
+            clearInterval(fadeIn);
+          }
+        },50);
+
+        const fadeOut = setInterval(function(){
+          if(opacityTwo > 0){
+            opacityTwo = opacityTwo-0.1;
+            colorTwo.style.opacity = opacityTwo;
+          }else{
+            clearInterval(fadeOut);
+          }
+        },50);
+    
+        isStatus = false;
+      };
+
+    });
+
+  </script>
+</body>
+</html>
