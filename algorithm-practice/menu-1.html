@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <script>
+
+    const root = document.getElementById('root');
+    // console.dir(root);
+    const divOne = root.children[0];
+    // console.dir(divOne);
+    const divTwo = root.children[1];
+    const divThree = root.children[2];
+
+    root.style.width = '100px';
+    root.style.height = '100px';
+    // root.style.backgroundColor = 'black';
+    root.style.display = 'flex';
+    root.style.flexDirection = 'column';
+    root.style.justifyContent = 'center';
+    root.style.alignItems = 'center';
+    root.style.position = 'relative';
+
+    divOne.style.width = '100px';
+    divOne.style.height = '10px';
+    divOne.style.backgroundColor = 'gray';
+    divOne.style.position = 'absolute';
+    divOne.style.top = 0;
+
+    divTwo.style.width = '100px';
+    divTwo.style.height = '10px';
+    divTwo.style.backgroundColor = 'gray';
+    divTwo.style.position = 'absolute';
+    
+    divThree.style.width = '100px';
+    divThree.style.height = '10px';
+    divThree.style.backgroundColor = 'gray';
+    divThree.style.position = 'absolute';
+    divThree.style.bottom = 0;
+
+    let value = true;
+    let oneRotateI = 0;
+    let twoRotateI = 0;
+    let threeOpacityI = 1;
+
+    root.addEventListener('click', function(){
+      // alert('over');
+      if(value === true){
+        const oneRotate = setInterval(function() {
+          
+          if (oneRotateI < 45){
+            oneRotateI = oneRotateI+1;
+            divOne.style.transform = `rotate(${oneRotateI}deg)`;
+          }else{
+            clearInterval(oneRotate);
+          }
+        }, 5);
+
+        const twoRotate = setInterval(function() {
+          
+          if (twoRotateI > -45){
+            twoRotateI = twoRotateI-1;
+            divTwo.style.transform = `rotate(${twoRotateI}deg)`;
+          }else{
+            clearInterval(twoRotate);
+          }
+        }, 5);
+
+        const threeOpacity = setInterval(function() {
+          
+          if (threeOpacityI > 0){
+            threeOpacityI = threeOpacityI-1;
+            divThree.style.opacity = threeOpacityI;
+          }else{
+            clearInterval(threeOpacity);
+          }
+        }, 20);
+        divOne.style.top = '50%';
+        divTwo.style.top = '50%';
+        // divThree.style.opacity = 0;
+        // divTwo.style.transform = 'rotate(-45deg)';
+        
+        value = false;
+
+      }else{
+        const oneRotate = setInterval(function() {
+          
+          if (oneRotateI > 0){
+            oneRotateI = oneRotateI-1;
+            divOne.style.transform = `rotate(${oneRotateI}deg)`;
+          }else{
+            clearInterval(oneRotate);
+          }
+        }, 5);
+
+        const twoRotate = setInterval(function() {
+          
+          if (twoRotateI < 0){
+            twoRotateI = twoRotateI+1;
+            divTwo.style.transform = `rotate(${twoRotateI}deg)`;
+          }else{
+            clearInterval(twoRotate);
+          }
+        }, 5);
+
+        const threeOpacity = setInterval(function() {
+          
+          if (threeOpacityI < 1){
+            threeOpacityI = threeOpacityI+1;
+            divThree.style.opacity = threeOpacityI;
+          }else{
+            clearInterval(threeOpacity);
+          }
+        }, 30);
+
+        divOne.style.top = 0;
+        divTwo.style.top = '';
+        // divThree.style.opacity = 1;
+
+        value = true;
+      }
+    });
+    
+  </script>
+</body>
+</html>
