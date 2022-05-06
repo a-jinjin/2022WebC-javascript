@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="root"></div>
+  <button id="click-btn">click</button>
+
+
+  <script>
+    const root = document.getElementById('root');
+    const clickBtn = document.getElementById('click-btn');
+
+    root.style.width = '100px';
+    root.style.height = '100px';
+    root.style.backgroundColor = '#333';
+
+    let opacityValue = 0;
+
+    root.style.opacity = opacityValue;
+
+    let clickValue = true;
+
+    clickBtn.addEventListener('click', function(){
+      // alert('test');
+      // opacityValue = 1;
+      // root.style.opacity = opacityValue;
+      
+      if(clickValue === true){
+        // alert('0입니다');
+      
+        let fade = setInterval(function(){
+          if(opacityValue < 1){
+            opacityValue = opacityValue+0.1;
+            root.style.opacity = opacityValue;
+          }else{
+            clearInterval(fade);
+          }
+        },20);
+      
+        clickValue = false;
+      
+      }else{
+        // alert('0이 아닙니다');
+        let fadeOut = setInterval(function(){
+          if(opacityValue > 0){
+          opacityValue = opacityValue-0.1;
+            root.style.opacity = opacityValue;
+          }else{
+            clearInterval(fadeOut);
+          }
+        },50);
+        clickValue = true;
+      }
+    });
+
+  </script>
+
+</body>
+</html>
