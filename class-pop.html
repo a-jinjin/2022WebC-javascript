@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pop-up</title>
+
+  <style>
+    *{margin: 0; padding: 0;}
+
+    #root{
+      width: 500px; 
+      height: 500px;
+      background-color: #ccc;
+      position: relative;
+    }
+
+    .test{
+      width: 100%; height: 50px;
+      background-color: #555;
+      margin-bottom: 1vh;
+    }
+
+    .size{
+      width: 100%; 
+      height: 200px;
+      background-color: black;
+    }
+    
+    .visible{
+      display: none;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div class="test">
+    </div>
+    <div class="test">
+    </div>
+  </div>
+
+  <script>
+    const root = document.getElementById('root');
+    // console.log(root.children);
+
+    root.addEventListener('click', function(event){
+      // alert('hello');
+      console.log(event.target);
+      if(event.target.classList.contains("size")){
+        console.log('size-up이라는 클래스를 가지고있습니다.');
+        console.dir(event.target);
+        event.target.classList.remove("size");
+      }else{
+        console.log('size-up이라는 클래스는 없습니다.');
+        event.target.classList.add("size");
+      }
+
+    });
+
+  </script>
+</body>
+</html>

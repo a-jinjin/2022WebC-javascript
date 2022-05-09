@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+    const bodyValue = document.body;
+    // console.dir(bodyValue);
+    // let text = document.createElement('h1');
+    let textH = document.createElement( 'h1' );
+    let textArr = ['PC', '태블릿', '모바일'];
+    
+    
+    if(bodyValue.clientWidth > 1200){
+      console.log('pc버전입니다.');
+      bodyValue.style.backgroundColor = 'black';
+      
+      let text = document.createTextNode(textArr[0]);
+      textH.appendChild( text );
+      bodyValue.appendChild( textH );
+      bodyValue.style.color = '#fff';
+      // bodyValue.textContent = 'pc버전입니다.';
+      
+    }else if(bodyValue.clientWidth > 600){
+      console.log('태블릿버전입니다.');
+      bodyValue.style.backgroundColor = 'gray';
+
+      let text = document.createTextNode(textArr[1]);
+      textH.appendChild( text );
+      bodyValue.appendChild( textH );
+
+    }else{
+      console.log('모바일버전입니다.');
+      bodyValue.style.backgroundColor = 'lightgray';
+
+      // let text = document.createTextNode(textArr[2]);
+      // textH.appendChild( text );
+      bodyValue.appendChild( textH );
+      // console.log(bodyValue.children[1]);
+      bodyValue.children[1].textContent = textArr[2];
+    };
+
+  </script>
+</body>
+</html>
