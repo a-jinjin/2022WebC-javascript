@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin:0; padding:0; box-sizing: border-box;}
+
+    #root {
+      width:100vw;
+      height: 100vh;
+      background-color: salmon;
+    }
+
+    #pop {
+      width: 50vw;
+      height: 50vh;
+      background-color: #fff;
+      position: fixed;
+      top: 50px;
+      left: 50px;
+      box-shadow: 2px 2px 2px rgba(100,100,100, 0.2);
+
+    }
+
+    .on {
+      display: none;
+    }
+
+
+
+  </style>
+  
+</head>
+<body>
+  <div id="root">
+    <!-- 팝업창 -->
+    <div id="pop">
+      <!-- 팝업창 안에 들어갈 내용들 -->
+      <h1>this is popup</h1>
+      <button id="click-button">close!</button>
+
+    </div>
+  </div>
+
+  <script>
+
+    const pop = document.getElementById('pop');
+    // 팝업창(pop div) id로 불러오기
+    const clickBtn = document.getElementById('click-button');
+    // 닫기버튼('close!' button) id로 불러오기
+    // ====> 팝업창을 제어하기 위해 불러온 것들
+
+    clickBtn.addEventListener('click', function() {
+    // 닫기버튼에 이벤트를 추가
+      if(pop.classList.contains('on')){
+      // 팝업창으로 쓴 pop div에 'on'이라는 class가 적용되어있다면
+        
+      } else {
+      // pop div에 'on'이라는 class가 적용되어있지 않다면
+      pop.classList.add('on'); 
+      // 'on'이라는 class를 추가하겠다. (*on class는 display:none. 따라서, on을 추가하면 '보이지 않는 것 처럼'된다.)
+      }
+    });
+    // ====> 팝업창으로 쓴 pop div에 'on'이라는 class가 적용되어있지 않다면 'on'이라는 class를 추가해 pop div를 사라진 것 처럼 보이도록 하겠다.
+    // ====> 이 이벤트는 click-button에 추가하겠다.
+    // ====> click-button ('close!'라고 쓰여있는 버튼)을 클릭하면 팝업창이 닫히는 것 처럼 보이는 이벤트
+
+
+  </script>
+
+</body>
+</html>
