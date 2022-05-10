@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{margin: 0; padding: 0;}
+    #root{
+      width: 100vw; height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+
+    const root = document.getElementById('root');
+    let bgColor = ['black', 'gray', 'lightgray'];
+
+    root.style.backgroundColor = bgColor[0];
+    let value = 0;
+
+    root.addEventListener('wheel', function(event){
+
+      if(value === 0){
+        if(event.deltaY > 0) {
+          root.style.backgroundColor = bgColor[1];
+          value = 1;
+          // console.log('value는 '+value);
+
+        }else{
+          alert('첫페이지');
+        }
+      
+      }else if(value === 1){
+        if(event.deltaY > 0){
+          root.style.backgroundColor = bgColor[2];
+          value = 2;
+          // console.log('value는 '+value);
+          
+        }else{
+          root.style.backgroundColor = bgColor[0];
+          // console.log('value는 '+value);
+          value = 0;
+        }
+
+      }else{
+        if(event.deltaY > 0){
+          alert('마지막 페이지');
+
+        }else{
+          root.style.backgroundColor = bgColor[1];
+          // console.log('value는 '+value);
+          value = 1;
+        }
+      }
+
+    });
+
+
+  </script>
+</body>
+</html>
