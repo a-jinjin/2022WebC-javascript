@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{margin: 0; padding: 0;}
+
+    #root {
+      width: 100vw; height: 100vh;
+      background-color: #ccc;
+    }
+
+    #root>div:nth-child(1){
+      background-color: salmon;
+    }
+
+    #root>div:nth-child(2){
+      background-color: seagreen;
+    }
+
+
+  </style>
+
+</head>
+
+
+<body>
+  <div id="root">
+    <div id="menuBtn">menu-1</div>
+    <div id="subBtn">itmes-1</div>
+  </div>
+
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const subBtn = document.getElementById('subBtn');
+    // console.log(menuBtn);
+    // console.log(subBtn);
+
+    let booleanType = true;
+
+    menuBtn.addEventListener('click', function(){
+      // console.log('hello~');
+      if(booleanType === true){
+        // console.log('true');
+        subBtn.style.display = 'none';
+        booleanType = false;
+      }else{
+        // console.log('false');
+        subBtn.style.display = 'block';
+        booleanType = true;
+      }
+    });
+
+  </script>
+</body>
+</html>

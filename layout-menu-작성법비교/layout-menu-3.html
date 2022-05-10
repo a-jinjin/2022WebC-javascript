@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{margin: 0; padding: 0;}
+
+    #root {
+      width: 100vw; height: 100vh;
+      background-color: #ccc;
+    }
+
+    #root>div:nth-child(1){
+      background-color: salmon;
+    }
+
+    #root>div:nth-child(2){
+      background-color: seagreen;
+    }
+
+    .none {
+      display: none;
+    }
+
+
+  </style>
+
+</head>
+
+
+<body>
+  <div id="root">
+    
+    <ul id="menu">
+      menu-title
+      <li class="items">items-1</li>
+      <li class="items">items-2</li>
+      <li class="items">items-3</li>
+      <li class="items">items-4</li>
+      <li class="items">items-5</li>
+      <li class="items">items-6</li>
+      <li class="items">items-7</li>
+      <li class="items">items-8</li>
+      <li class="items">items-9</li>
+      <li class="items">items-10</li>
+    </ul>
+
+  </div>
+
+
+  <script>
+    const menu = document.getElementById('menu');
+    const items = document.getElementsByClassName('items');
+    console.log(items);
+    console.log(menu);
+
+    
+    let booleanType = true;
+
+    // menu를 클릭하면 자식들 모두 파란색 글씨로 바꿔줘
+    menu.addEventListener('click', function() {
+    
+      if(booleanType === true){
+        // console.log('hello')
+        for(let index = 0; index < items.length; index++){
+        items[index].style.display = 'none';
+        }
+
+        booleanType = false;
+
+      }else{
+        // console.log('bye')
+        for(let index = 0; index < items.length; index++){
+          items[index].style.display = 'block';
+          }
+          
+        booleanType = true;
+
+      }
+      
+    });
+
+
+  </script>
+</body>
+</html>
