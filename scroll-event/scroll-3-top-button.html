@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    #root{
+      width: 100%; height: 500vh;
+      position: relative;
+      background: linear-gradient(180deg, rgb(151, 180, 218), rgb(149, 86, 185));
+    }
+
+    #root > button {
+      width: 80px; height: 80px;
+      position: fixed;
+      bottom: 100px; 
+      right: 100px;
+      
+      border-radius: 40px;
+      border: none;
+      box-shadow: 0 0 10px rgb(48, 36, 116);
+      font-size: 21px;
+    }
+
+    .view {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="root">
+    <button id="topBtn" class="view">top</button>
+  </div>
+
+  <script> 
+    const topBtn = document.getElementById('topBtn');
+    let docTotalHeightValue = document.body.scrollHeight;
+    
+    // console.dir(topBtn);
+    console.dir(window)
+
+    topBtn.addEventListener('click', (event) => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      topBtn.classList.add('view');
+      // 어차피 맨 위로 올라갈거니까 버튼을 클릭하면 버튼이 사라지게 하자.
+    });
+
+    topBtn.addEventListener('mouseover', function(){
+      topBtn.style.backgroundColor = 'navy';
+      topBtn.style.color = 'white';
+    });
+
+    topBtn.addEventListener('mouseout', function(){
+      topBtn.style.backgroundColor = '';
+      topBtn.style.color = '';
+    });
+
+    // 스크롤이 0이면 btn을 보이지 않도록 해달라
+    // ==> 스크롤이 0이 아니면 btn의 class를 떼면 되나?
+
+    window.addEventListener('wheel', function(){
+      if(window.scrollY > 500){
+        // console.log('스크롤');
+        // 버튼 보이게
+        // if(topBtn.classList.contains('view')){
+        //   // console.log('class')
+        //   topBtn.classList.remove('view');
+        // }
+        topBtn.classList.remove('view');
+
+      }else if(window.scrollY < 500){
+        // console.log('스크롤이 0');
+        // 버튼 사라지게
+        // ==> 스크롤을 기준으로 사라지게 하니까 버튼을 작동해 맨 위로 올라왔을때 스크롤을 위로 한 번 올려야 버튼이 사라짐.
+        // ==> 어차피 top버튼을 눌러 맨 위로 올라가면 버튼이 사라지니까 버튼을 클릭했을때 버튼이 사라지게 하면 되지 않나?
+
+        topBtn.classList.add('view');
+      }
+    })
+
+  </script>
+</body>
+</html>

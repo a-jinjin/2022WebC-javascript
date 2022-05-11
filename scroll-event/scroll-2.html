@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{margin: 0; padding: 0;}
+    #root{
+      width: 100%; height: 500vh;
+      background: linear-gradient(180deg, rgb(151, 180, 218), rgb(149, 86, 185));
+      /* linear : 선형 / nolinear : 비선형 
+      gradient : 그레디언트 / 그라데이션 x / 값과 값 사이의 중간값을 연속적으로 만들어주는 것 */
+    }
+
+  </style>
+</head>
+
+
+<body>
+  <div id="root"> </div>
+
+  <script> 
+    let docTotalHeightValue = document.body.scrollHeight;
+    
+    window.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+        // behavior: 행동방식
+      });
+    });
+
+    // ====> '맨 위로 올라가기'버튼의 기본형
+  </script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0;}
+
+    #root{
+      width: 100%; height: 500vh;
+      background-color: #ccc;
+    }
+
+    #root > section {
+      width: 100%; height: 2vh;
+      background-color: seagreen;
+      /* border: 1px solid green; */
+    }
+
+    #root > aside {
+      width: 100%; height: 2vh;
+      background-color: steelblue;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+
+  <script>
+
+    const maker = document.getElementById('root');
+    // let article = document.createElement('article');
+    // maker.appendChild(article);
+    
+    let count = 0;
+    // 클릭하면 section을 만들어주는 이벤트
+    maker.addEventListener('wheel', function(){
+      console.log('wheel이벤트 작동됨')
+      let section = document.createElement('section');
+      section.setAttribute('id', `section-${count}`);
+      // ==> section에 id를 만들겠다.
+      section.setAttribute('class', `section-${count}`);
+      // ==> section에 class를 만들겠다.
+      maker.appendChild(section);
+      section.textContent = count;
+      // maker.appendChild(article);
+      // ==> article은 이미 36에서 만들고 휘발되었기 때문에 여기서 작동하지 않는다.
+      count++;
+    });
+
+    maker.addEventListener('click', function(){
+      console.log('클릭이벤트 작동중');
+      let aside = document.createElement('aside');
+      maker.appendChild(aside);
+      aside.textContent = 'click';
+      maker.insertBefore(aside, maker.firstChild);
+    });
+
+    // console.log(aside);
+    // ==> aside는 지역변수이기때문에 밖에서 부르면 불러올 수 없다. (함수 안에서 작동하고 증발되었기 때문!)
+    
+
+
+  </script>
+
+</body>
+</html>

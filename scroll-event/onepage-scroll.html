@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #root {
+      width: 100%;
+    }
+
+    #root>section {
+      width: inherit;
+      /* 100vw */
+      height: 100vh;
+      background: linear-gradient(#ccc, #555);
+      /* border: 1px solid red; */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <section>1</section>
+    <section>2</section>
+    <section>3</section>
+    <section>4</section>
+    <section>5</section>
+  </div>
+
+  <script>
+    const root = document.querySelector('#root');
+    console.log(root);
+    const sections = document.querySelectorAll('#root > section');
+    console.log(sections);
+
+    console.dir(root);
+    console.log("현재 이 문서의 전체 높이값은" + root.offsetHeight);
+    console.dir(sections[0]);
+    console.log("section 태그 하나의 높이값은" + sections[0].offsetHeight);
+
+    console.log(window.scrollY);
+
+    let heightValue = 0;
+    let switchValue = true;
+    window.addEventListener('click', function () {
+
+
+      if (switchValue === true) {
+        heightValue = heightValue + sections[0].offsetHeight;
+        // heightValue 값에 sections[0]의 offsetHeight값을 더한 값을 heightValue에 대입한다. 
+        // ==> 클릭할때마다 sections[0]dml offsetHeight만큼의 값이 더해지게 될 것.
+        console.log("변수 핸들러 heightValue의 현재값 입니다 :" + heightValue);
+
+        window.scrollTo({
+        // 윈도우의 ~로 스크롤해라
+          top: heightValue,
+          // heightValue값 만큼의 top좌표로 스크롤 이동해라.
+          // ==> 이 heightValue는 위에서(57열) 계산된 heightValue. 클릭할때마다 값이 변할 것이다.
+          behavior: "smooth"
+          // 부드럽게 움직이게
+        });
+
+        if (heightValue >= root.offsetHeight) {
+        // 만약 heightValue의 값이 문서의 offsetHeight값과 같거나 더 커졌다면
+          switchValue = false;
+          // switchvalue를 flase로 바꿔라.
+          // ==> true일 때 heightvalue의 값을 계속해서 더해주는 이벤트이기때문에 false가 되면 heightValue의 값을 더이상 더하지 않는다.
+        }
+
+      } else {
+      // switchValue가 false라면!
+
+        heightValue = 0;
+        // heightValue에 0을 대입해 처음과 같은 상태로 만들어준다.
+
+        window.scrollTo({
+          top: 0,
+          // scrollY 0으로 이동 (=== 맨 위로 이동)
+          behavior: "smooth"
+        });
+        switchValue = true;
+        // switchValue를 true로 만들어서 이벤트를 다시 반복할 수 있도록 한다.
+      }
+
+    });
+  </script>
+</body>
+
+</html>
