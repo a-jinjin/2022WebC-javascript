@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{margin: 0; padding: 0;}
+
+    #root {
+      width: 100vw; height: 100vh;
+      background-color: #ccc;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btnPop {
+      width: 100px; height: 40px;
+      margin-top: 5vh;
+    }
+
+    .pop{
+      width: 200px; height: 200px;
+      padding: 10px;
+      background-color: #fff;
+      position: absolute;
+      top: 20%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="root">
+    <button id="btnA" class="btnPop">팝업</button>
+  </div>
+  <!-- 
+    네모 팝업창
+    ==> a버튼을 눌렀을 때 팝업이 나타난다.
+    ==> "만들어져야 된다" / display 쓰지 않기!
+  -->
+
+  <script>
+    const root = document.getElementById('root');
+    const btnA = document.getElementById('btnA');
+    // console.log(btnA);
+
+    // *** creatElement는 지역변수로 만드는 것이 일반적이다.
+
+    // let value = true;
+    btnA.addEventListener('click', function(){
+      // console.log('버튼 눌림');
+
+        // setTimeout(function(){
+        // ==> 1초 뒤에 팝업창이 뜨도록 만들어보기
+          // console.log('타임아웃');
+
+          let divPop = document.createElement('div');
+          root.appendChild(divPop);
+          divPop.setAttribute('class', 'pop');
+          divPop.setAttribute('id', 'popUp');
+          divPop.textContent = '3초 후에 닫기버튼 생성';
+
+
+          // 5초 후에 팝업창을 닫을 수 있는 버튼을 생성해라.
+          setTimeout(function(){
+            divPop.textContent = '팝업창을 닫을 수 있음';
+            
+            let popBtn = document.createElement('button');
+            divPop.appendChild(popBtn);
+            popBtn.setAttribute('class', 'btnPop');
+            popBtn.textContent = 'close';
+            
+            // 버튼에 이벤트 추가 : 팝업창을 사라지게
+            popBtn.addEventListener('click', function(){
+              divPop.parentNode.removeChild(popUp);
+            });
+          
+          }, 3000);
+          
+
+        // }, 1000);
+
+    });
+
+  </script>
+
+
+</body>
+</html>
