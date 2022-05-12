@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div data-size="1"></div>
+    <div data-size="2"></div>
+    <div data-size="3"></div>
+  </div>
+
+
+  <script>
+    const root = document.getElementById('root');
+    const box = root.children;
+    console.log(box); // ==> 배열
+
+    for(let i = 0; i < box.length; i++){
+      // console.log(box[i].dataset.size);
+
+      // if(box[i].dataset.size === '1'){
+      //   box[i].style.width = '100px';
+      //   box[i].style.height = '200px';
+      //   box[i].style.backgroundColor = 'gray';
+      //   box[i].style.marginBottom = '10px';
+      // }else{
+      //   box[i].style.width = '100px';
+      //   box[i].style.height = '100px';
+      //   box[i].style.backgroundColor = 'gray';
+      //   box[i].style.marginBottom = '10px';
+      // }
+
+        box[i].style.width = '100px';
+        box[i].style.height = '100px';
+        box[i].style.backgroundColor = 'gray';
+        box[i].style.marginBottom = '10px';
+      
+    }; // ==> for문은 제대로 작동함!
+
+    
+    // 클릭된것의 dataset이 1이면 blue / 아니면 red로 바뀌도록 이벤트 만들고싶음.
+
+    root.addEventListener('click',(event)=>{
+      // console.log(event.target);
+      let targetData = event.target.dataset.size;
+        
+      if(targetData === "1"){
+        event.target.style.backgroundColor = 'blue';
+      }else{
+        event.target.style.backgroundColor = 'red';
+      };
+
+      
+    });
+
+  </script>
+</body>
+</html>

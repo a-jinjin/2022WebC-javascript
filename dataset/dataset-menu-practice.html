@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .off{
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <button id="buttonOne">menu-1</button>
+    <button>menu-2</button>
+    <button>menu-3</button>
+    <button>menu-4</button>
+  </div>
+
+  <!-- button-1을 클릭했을 때 나머지 button들이 보이지 않게 하는 제어 만들기 -->
+  <!-- dataset을 사용하지 않고 만들어보기 -->
+  <script>
+    const root = document.getElementById('root');
+    // console.log(root.children);
+    const buttonOne = document.getElementById('buttonOne');
+    // console.dir(buttonOne);
+
+    buttonOne.addEventListener('click', () => {
+      // console.log('hello')
+      for(let index = 1; index < root.children.length; index++){
+        root.children[index].classList.add('off');
+      }
+    });
+
+    
+
+  </script>
+
+</body>
+</html>
