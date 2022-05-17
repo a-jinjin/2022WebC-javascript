@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{margin: 0; padding: 0;}
+
+    #root {
+      width: 100vw; height: 100vh;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    #circle {
+      width: 200px; height: 200px;
+      border-radius: 100px;
+      background-color: #ccc;
+      position: absolute;
+      bottom: 100px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="circle"></div>
+  </div>
+
+
+  <script>
+    const root = document.getElementById('root');
+    const circle = document.getElementById('circle');
+    
+    let bottomValue = 100;
+
+    if(bottomValue >= 100){
+      const timer = setInterval(function(){
+        bottomValue = bottomValue+2;
+        circle.style.bottom = `${bottomValue}px`;
+
+        if(bottomValue === 150){
+          clearInterval(timer);
+
+          const topToBottom = setInterval(function(){
+            bottomValue = bottomValue-5;
+            circle.style.bottom = `${bottomValue}px`;
+          
+            if(bottomValue === 100){
+              clearInterval(topToBottom);
+            }
+          }, 100);
+
+        }
+
+      }, 50);
+
+    }
+
+  </script>
+</body>
+</html>
