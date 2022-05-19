@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <span id="test">this is span</span>
+
+  <script>
+
+    const test = document.getElementById('test');
+    console.dir(test);
+
+    function tagNameMaker(elem){
+      if(typeof(elem.tagName) === 'string'){
+        // return elem.tagName.toLowerCase();
+        //toLowerCase => 소문자로 바꿔줌
+
+        elem.style.width = (elem.textContent.length*100)+'px';
+        elem.style.backgroundColor = 'red';
+        // => span의 display 값은 블록이 아니라 인라인. width값을 지정해줘도 글씨의 영역만큼만 backgroundColor = red가 적용된다.
+        
+        if(elem.style.display === '' || elem.style.display === 'inline'){
+          elem.style.display = 'block';
+        // display 값을 억지로 바꿔주면 width값이 적용된 배경색이 나온다.
+        }
+        
+        return elem;
+
+      };
+    }
+    
+    // console.log(tagNameMaker(test));
+    tagNameMaker(test);
+
+    // const makeSpan = document.createElement(tagNameMaker(test));
+    // const makeSpan2 = document.createElement('span');
+
+
+  </script>
+</body>
+</html>

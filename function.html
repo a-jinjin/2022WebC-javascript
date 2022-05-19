@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // 배열 생성기
+
+    function add(a, b) {
+    // arrMakerReturnArr의 부품으로 사용할 함수
+      return a + b;
+    }
+
+    function arrMakerReturnArr(element) {
+      let arr = [ ];
+      // arr.push(element);
+      arr[0] = element;
+      arr[1] = add(1, 2);
+      if(typeof(element) === 'string'){
+        arr[2] = element.length;
+      };
+      return arr;
+    };
+
+    console.log(arrMakerReturnArr('토마토'));
+  </script>
+</body>
+</html>
