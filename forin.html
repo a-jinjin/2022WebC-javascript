@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      const root = document.getElementById("root");
+
+      // console.log(typeof root); // root === object. for in 사용 가능
+
+      // console.log(root.tagName);
+      // let tag = root.tagName;
+      // root.textContent = tag;
+
+      console.log(root.accessKey);
+      console.log(root["accessKey"]);
+
+      for (let properties in root) {
+        const p = document.createElement("p");
+        p.textContent = properties;
+        root.appendChild(p);
+        // console.log(typeof properties); //string
+        console.log(properties); //string
+        // console.log(root.incluedes(properties));
+      }
+
+      // console.log(root.children[0]);
+      for (i = 0; i < root.children.length; i++) {
+        if (i % 2 === 0) {
+          //짝수
+          root.children[i].style.color = "red";
+        } else {
+          root.children[i].style.backgroundColor = "lightseagreen";
+        }
+      }
+    </script>
+  </body>
+</html>
