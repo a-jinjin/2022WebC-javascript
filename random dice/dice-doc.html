@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>random</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    #root { 
+      width: 100vw; height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .box {
+      width: 200px; height: 200px;
+      border-radius: 20px;
+      background-color: #fff;
+      border: 3px solid #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      width: 100px; height: 40px;
+      margin-top: 40px;
+    }
+
+    .number-dot {
+      width: 40px; height: 40px;
+      margin: 10px;
+      border-radius: 20px;
+      background-color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="root">
+  </div>
+
+  <script>
+    const root = document.getElementById('root');
+    const box = document.createElement('div');
+    root.appendChild(box);
+    box.classList.add('box');
+    const button = document.createElement('button');
+    root.appendChild(button);
+    button.classList.add('btn');
+    button.innerText = '클릭';
+
+    function randomDice(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      
+      return Math.floor(Math.random() * (max - min + 1)) + min; 
+    }
+
+    
+    let bgColor = ['#000', '#222', '#444', '#666', '#888', '#ccc'];
+    
+
+    
+    button.addEventListener('click', function() {
+      box.innerHTML = '';
+      // box 안에 있는 내용물 다 지워버리기
+      
+      let deg = 0;
+      let diceNumber = randomDice(1, 6);
+      box.style.backgroundColor = bgColor[diceNumber-1];
+      
+      const move = setInterval(() => {
+        deg = deg+10;
+        box.style.transform = `rotate(${deg}deg)`;
+        
+        if(deg >= 360) {
+          clearInterval(move);
+        }
+      }, 10);
+
+
+      for(let i = 0; i < diceNumber; i++) {
+        console.log(i);
+        let numberDot = document.createElement('div');
+        numberDot.classList.add('number-dot');
+        box.appendChild(numberDot);
+      }
+      // 주사위 숫자만큼 div 생성
+    
+    });
+
+  </script>
+</body>
+</html>
