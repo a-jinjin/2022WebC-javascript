@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    // const a = document.getElementById('root');
+    // console.log(a);
+    // console.dir(a);
+    
+    /*
+    생성자 함수에서 뽑아져나온 '객체'
+    <div></div> : 꺽쇠를 써서 HTML에 약속된 문자열을 작성하면 객체를 만들어줘라.
+    ==> DOM API
+
+    "수많은 객체의 키"들은 어떤 붕어빵 틀에서 찍어져 나온 것.
+    ==> 붕어빵 틀 === 생성자 함수
+    */
+
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+    // document.body.appendChild(document.createElement('div'));
+    
+    const ul = document.createElement('ul');
+    root.appendChild(ul);
+    
+
+    const array = ['img-1.jpg'];
+    
+    setTimeout(() => {
+      // ul.innerHTML = '다먹었다 메롱';
+      for(let i = 0; i < 1000; i++) {
+        const li = document.createElement('li');
+        const img = document.createElement('img');
+        img.setAttribute('src', `images/images/image-[i].jpg`);
+        ul.appendChild(li);
+        li.appendChild(img);
+      }
+    }, 1000);
+
+
+</script>
+</body>
+</html>
